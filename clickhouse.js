@@ -1,6 +1,6 @@
 
    // const ANALYTICS_API = 'http://analytics.local/api/analytics';
-   const ANALYTICS_API = 'http://a2431bc40c2c1483f8457678521a4454-1847741026.us-east-1.elb.amazonaws.com:3000/api/analytics';
+   const ANALYTICS_API = 'http://adc39b9ed187548159822bbd781982b9-271722534.us-east-1.elb.amazonaws.com:3000/api/analytics';
 
    function generateUUID() {
        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
