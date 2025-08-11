@@ -7,12 +7,12 @@ It includes multiple backend services, a frontend application, and an observabil
 
 ## 📦 Services Overview
 
-| Service          | Description                                                                 | Tech Stack |
-|------------------|-----------------------------------------------------------------------------|------------|
-| **Game Service** | Manages game data (list games, add games).                                  | Node.js, Express, PostgreSQL, Prisma |
-| **Order Service**| Handles order creation and retrieval for purchased games.                   | Node.js, Express, PostgreSQL, Prisma |
-| **Frontend**     | Web application for the Lugx Gaming Platform.                               | React.js, TypeScript |
-| **Analytics Service** | Collects and stores web analytics data in ClickHouse for visualization. | Node.js, ClickHouse |
+| Service          | Description                                                                 | Tech Stack | Repository |
+|------------------|-----------------------------------------------------------------------------|------------|------------|
+| **Game Service** | Manages game data (list games, add games).                                  | Node.js, Express, PostgreSQL, Prisma | [🔗 GitHub - Game Service](https://github.com/yasithWimukthi/game-service-LUGX) |
+| **Order Service**| Handles order creation and retrieval for purchased games.                   | Node.js, Express, PostgreSQL, Prisma | [🔗 GitHub - Order Service](https://github.com/yasithWimukthi/order-service-LUGX) |
+| **Frontend**     | Web application for the Lugx Gaming Platform.                               | React.js, TypeScript | [🔗 GitHub - Frontend](https://github.com/yasithWimukthi/lugx-frontend) |
+| **Analytics Service** | Collects and stores web analytics data in ClickHouse for visualization. | Node.js, ClickHouse | [🔗 GitHub - Analytics Service](https://github.com/yasithWimukthi/analytic-service) |
 
 ---
 
@@ -37,9 +37,9 @@ It includes multiple backend services, a frontend application, and an observabil
 
 ### Solution Architecture
 - **Frontend** communicates with backend services via public LoadBalancer endpoints.
-- **Game Service** and **Order Service** manage their own databases.
-- **Analytics Service** receives data and stores it in ClickHouse.
-- Requests flow from the frontend → API Gateway (LoadBalancers) → microservices → databases.
+- **Game Service** and **Order Service** manage their own PostgreSQL databases.
+- **Analytics Service** stores web analytics data in ClickHouse.
+- Requests flow from the frontend → API endpoints (LoadBalancers) → microservices → databases.
 
 ### Deployment Architecture
 - All services run in **Kubernetes pods**.
@@ -50,7 +50,7 @@ It includes multiple backend services, a frontend application, and an observabil
 ---
 
 ## 🔐 Security & Ethics Considerations
-- Use of **Kubernetes secrets** for credentials (no hardcoded values in manifests).
+- Use of **Kubernetes secrets** for database credentials (no hardcoded values in manifests).
 - Restricting public access where not required.
 - Ensuring **data privacy** for analytics collection.
 - Ethical handling of user data (opt-in tracking, anonymization for analytics).
@@ -58,7 +58,7 @@ It includes multiple backend services, a frontend application, and an observabil
 ---
 
 ## 🛠 CI/CD Pipeline
-- **Trigger**: Push to `main`/`master` branch.
+- **Trigger**: Push to `main` branch of each service repo.
 - **Steps**:
   1. Checkout source code.
   2. Configure AWS and Kubernetes.
