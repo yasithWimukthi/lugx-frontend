@@ -77,3 +77,21 @@ It includes multiple backend services, a frontend application, and an observabil
 #### Get All Games
 ```http
 GET /api/games
+```
+
+### Order Service
+#### Get All Orders
+```http
+GET /api/orders
+```
+
+#### Create New Order
+```http
+POST /api/orders
+Content-Type: application/json
+
+{
+  "gameIds": [1, 2],
+  "totalPrice": 49.98
+}
+```
